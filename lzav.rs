@@ -581,6 +581,7 @@ fn lzav_decompress(src: &[u8], dst: &mut Vec<u8>, dstl: usize) -> Result<(), LZA
 	if src[0] >> 4 != 1 {
 		return Err(LZAVError::UnkFmt);
 	}
+	dst.reserve(dstl);
 
 	let mut ip = 0; // Compressed data pointer.
 	let ipe = ip + srcl; // End pointer.
